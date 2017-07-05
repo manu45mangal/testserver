@@ -8,7 +8,7 @@ var schema = mongoose.Schema({
     connId : {
         type : String,
         required : true,
-        uniq : true
+        unique : true
     },
     timeout : {
         type: Number,
