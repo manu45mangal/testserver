@@ -7,7 +7,8 @@ const mongoose = require("mongoose");
 var schema = mongoose.Schema({
     connId : {
         type : String,
-        required : true
+        required : true,
+        uniq : true
     },
     timeout : {
         type: Number,

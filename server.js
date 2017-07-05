@@ -40,16 +40,15 @@ app.get("/api/serverStatus",(req,res)=>
         r.find({},'timeout connId',(err,docs)=>{
             if(!err)
             {
-                console.log("came in here")
+             
                 var check = JSON.stringify(docs)
                   _.forEach(docs,(value)=>
                   {
-                      console.log(value.connId)
+                    
                       var val = value.connId
                       y[val]= ""+value.timeout+""     
                   })
-                console.log(y)
-                console.log("came in here 2")
+             
                 res.status(200).send(y)
             }
             else
@@ -68,7 +67,6 @@ app.get('/api/request',(req,res)=>
         user.save().then((user)=>{
     },(err)=>
     {
-        console.log(err);
         res.status(400).send("some error occured");
     })
     var flag =1;
@@ -86,7 +84,7 @@ app.get('/api/request',(req,res)=>
                 res.status(200).send({"Status":response})
                 this.clear();
             }
-            console.log("done successfully")
+          
         },(err)=>{
     res.status(400).send("Unknown error occured");})
 }, {
