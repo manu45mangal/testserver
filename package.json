@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/manu45mangal/testserver#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
-    "mongoose": "^4.11.1"
+    "lodash": "^4.17.4",
+    "mongoose": "^4.11.1",
+    "set-timer": "^2.1.4"
   }
 }
