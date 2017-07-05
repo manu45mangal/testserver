@@ -17,7 +17,7 @@ var app = express();
 
 console.log(`PATH: ${dbpath}`)
 
-mongoose.connect("mongodb://manu:manu12345@ds149382.mlab.com:49382/project", {
+mongoose.connect(dbpath, {
     useMongoClient: true
 })
 

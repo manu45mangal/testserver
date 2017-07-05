@@ -8,11 +8,13 @@ var schema = mongoose.Schema({
     connId : {
         type : String,
         required : true,
-        unique : true
+        trim : true,
+        unique : true,
     },
     timeout : {
         type: Number,
-        required : true
+        required : true,
+        trim : true
     },
     kill : {
         type : Boolean,
