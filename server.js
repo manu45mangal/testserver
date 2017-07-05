@@ -17,7 +17,7 @@ var app = express();
 
 console.log(`PATH: ${dbpath}`)
 
-mongoose.connect(dbpath, {
+mongoose.connect("mongodb://manu:manu12345@ds149382.mlab.com:49382/project", {
     useMongoClient: true
 })
 
@@ -34,12 +34,13 @@ app.get("/",(req,res)=>
 //Problem Solution Routes
 app.get("/api/serverStatus",(req,res)=>
     {
-        console.log("came in here")
+        
         var y = {}
         var i=0;
         r.find({},'timeout connId',(err,docs)=>{
             if(!err)
             {
+                console.log("came in here")
                 var check = JSON.stringify(docs)
                   _.forEach(docs,(value)=>
                   {
@@ -48,6 +49,7 @@ app.get("/api/serverStatus",(req,res)=>
                       y[val]= ""+value.timeout+""     
                   })
                 console.log(y)
+                console.log("came in here 2")
                 res.status(200).send(y)
             }
             else
