@@ -24,7 +24,7 @@ mongoose.connect(dbpath, {
 app.use(bodyParser.json());
 
 // home route
-app.get("/",()=>
+app.get("/",(req,res)=>
 {
     res.send("Hey Hi there")
     console.log("HI");
