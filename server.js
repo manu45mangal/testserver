@@ -1,6 +1,5 @@
-/**
- * Created by AMAR on 7/5/2017.
- */
+/**Created by AMAR on 7/5/2017.**/
+
 //required modules
 const express = require('express');
 const mongoose = require("mongoose");
@@ -11,12 +10,13 @@ const {r} = require("./db_schema")
 
 //setting up PORT
 var port = process.env.PORT|| 3000
+var dbpath = process.env.MONGODB_URI || "mongodb://localhost:27017/formongoose" 
 mongoose.Promise = global.Promise;
 
 var app = express();
 
 
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(dbpath, {
     useMongoClient: true
 })
 
