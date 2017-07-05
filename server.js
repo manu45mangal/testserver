@@ -15,6 +15,7 @@ mongoose.Promise = global.Promise;
 
 var app = express();
 
+console.log(`PATH: ${dbpath}`)
 
 mongoose.connect(dbpath, {
     useMongoClient: true
@@ -33,6 +34,7 @@ app.get("/",(req,res)=>
 //Problem Solution Routes
 app.get("/api/serverStatus",(req,res)=>
     {
+        console.log("came in here")
         var y = {}
         var i=0;
         r.find({},'timeout connId',(err,docs)=>{
