@@ -5,10 +5,8 @@ const express = require('express');
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser")
 const _ = require("lodash")
-const hbs = require('hbs')
 const setTimer = require('set-timer');
 const {r} = require("./db_schema")
-var path = require('path');
 
 //setting up PORT
 var port = process.env.PORT|| 3000
@@ -17,22 +15,19 @@ mongoose.Promise = global.Promise;
 
 var app = express();
 
+console.log(`PATH: ${dbpath}`)
 
 mongoose.connect(dbpath, {
     useMongoClient: true
 })
 
-hbs.registerPartials(__dirname +'/views/Partials');
-app.set('view-engine','hbs');
-
 //Midlleware
-app.use(express.static(path.join(__dirname + 'public' )));
 app.use(bodyParser.json());
 
 // home route
 app.get("/",(req,res)=>
 {
-    res.render(__dirname + '/public/views/landingPage.hbs')
+    res.send("Hey Hi there")
     console.log("HI");
 }
 )
