@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser")
 const _ = require("lodash")
 const setTimer = require('set-timer');
+const hbs = require('hbs');
 const {r} = require("./db_schema")
 
 //setting up PORT
@@ -21,16 +22,33 @@ mongoose.connect(dbpath, {
     useMongoClient: true
 })
 
+app.static(__dirname + "/public/");
+
+app.set('view-engine','hbs');
 //Midlleware
 app.use(bodyParser.json());
 
 // home route
 app.get("/",(req,res)=>
 {
-    res.send("Hey Hi there")
+    res.render("index.hbs")
     console.log("HI");
 }
 )
+
+//setting up the access control
+app.all('/*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-type,Accept,X-Access-Token,X-Key');
+    if (req.method == 'OPTIONS') {
+        res.status(200).end();
+    } else {
+        next();
+    }
+});
+
+
 //Problem Solution Routes
 app.get("/api/serverStatus",(req,res)=>
     {
